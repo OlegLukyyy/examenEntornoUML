@@ -15,13 +15,12 @@ public class GestorEmpleados {
 
     public void ejecutar() {
 	boolean running = true;
+
 	while (running) {
 
 	    consola.mostrarMenu();
 
-	    int option = consola.leerEntero("Seleccione una opción:");
-
-	    switch (option) {
+	    switch (consola.leerEntero("Seleccione una opción:")) {
 	    case 1:
 		contratarEmpleado();
 	    case 2:
@@ -35,6 +34,7 @@ public class GestorEmpleados {
     }
 
     private void contratarEmpleado() {
+
 	int tipo = consola.leerEntero("1 - Técnico\n2 - Comercial");
 
 	String dni = consola.leerTexto("Introduce los apellidos");
@@ -47,7 +47,7 @@ public class GestorEmpleados {
 	    int categoria = consola.leerEntero("Introduce categoria");
 	    plantilla.agregarEmpleado(new Tecnico(dni, nombre, apellidos, sueldoBase, categoria));
 	case 2:
-	    double ventas = consola.leerImporte("Introduce sus ventas");
+	    plantilla.agregarEmpleado(new Comercial(dni, nombre, apellidos, sueldoBase));
 	default:
 	    consola.imprimirLinea("Opcion no valida");
 	}
@@ -58,7 +58,8 @@ public class GestorEmpleados {
     }
 
     private void listarPorFiltro() {
-
+	String filtro = consola.leerTexto("Introduce el nombre o apellidos del empleado");
+	plantilla.getEmpleadosPorNombre(filtro);
     }
 
     private void listarEmpleados() {
