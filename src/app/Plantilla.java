@@ -8,7 +8,7 @@ public class Plantilla {
     private List<Empleado> empleados;
 
     public Plantilla() {
-
+	this.empleados = new ArrayList<Empleado>();
     }
 
     public void agregarEmpleado(Empleado empleado) {
@@ -22,7 +22,7 @@ public class Plantilla {
 	    return empleados;
 	}
 
-	for (Empleado empleado : filtrado) {
+	for (Empleado empleado : empleados) {
 	    if (empleado.getNombre().equalsIgnoreCase(filtroNombre)
 		    || empleado.getApellidos().equalsIgnoreCase(filtroNombre)) {
 		filtrado.add(empleado);

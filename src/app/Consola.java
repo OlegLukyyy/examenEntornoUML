@@ -4,7 +4,11 @@ import java.util.Scanner;
 
 public class Consola implements IEntradaSalida {
 
-    private Scanner sc = new Scanner(System.in);
+    private Scanner sc;
+
+    public Consola() {
+	this.sc = new Scanner(System.in);
+    }
 
     @Override
     public void imprimir(String texto) {
@@ -20,21 +24,25 @@ public class Consola implements IEntradaSalida {
 
     @Override
     public String leerTexto(String mensaje) {
-
+	imprimirLinea(mensaje);
 	return sc.nextLine();
     }
 
     @Override
     public int leerEntero(String mensaje) {
-
-	return sc.nextInt();
+	imprimirLinea(mensaje);
+	int input = sc.nextInt();
+	sc.nextLine();
+	return input;
 
     }
 
     @Override
     public Double leerImporte(String mensaje) {
-
-	return sc.nextDouble();
+	imprimirLinea(mensaje);
+	double input = sc.nextDouble();
+	sc.nextLine();
+	return input;
     }
 
     @Override
